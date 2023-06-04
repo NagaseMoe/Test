@@ -28,23 +28,27 @@ const Calculator = () => {
 
   return (
     <View>
+      <Text>価格A</Text>
       <TextInput
-        placeholder="価格A"
+        placeholder = '値段を入力'
         value={number1}
         onChangeText={text => setNumber1(text)}
       />
+      <Text>量（g、ml、個）</Text>
       <TextInput
-        placeholder="量（g、ml、個）"
+        placeholder = '量を入力'
         value={number2}
         onChangeText={text => setNumber2(text)}
       />
+      <Text>価格B</Text>
       <TextInput
-        placeholder='価格B'
+        placeholder = '値段を入力'
         value={number3}
         onChangeText={text => setNumber3(text)}
       />
+      <Text>量（g、ml、個）</Text>
       <TextInput
-        placeholder='量（g、ml、個）'
+        placeholder = '量を入力'
         value={number4}
         onChangeText={text => setNumber4(text)}
       />
