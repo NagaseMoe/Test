@@ -4,39 +4,26 @@ import { View, TextInput, Button, Text } from 'react-native';
 const Calculator = () => {
   const [number1, setNumber1] = useState('');
   const [number2, setNumber2] = useState('');
-  // const [number3, setNumber3] = useState('');
-  // const [number4, setNumber4] = useState('');
-  const [operator, setOperator] = useState('');
+  const [number3, setNumber3] = useState('');
+  const [number4, setNumber4] = useState('');
   const [result, setResult] = useState('');
 
   const calculate = () => {
-    const num1 = parseFloat(number1);
-    const num2 = parseFloat(number2);
-    // const num3 = parseFloat(number3);
-    // const num4 = parseFloat(number4);
+    const num1 = number1 / number2;
+    const num2 = number3 / number4;
 
     if (isNaN(num1) || isNaN(num2)) {
       setResult('値が入力されていません');
       return;
     }
 
-    let calculatedResult;
-    // switch (operator) {
-    //   case '<':
-    //     calculatedResult = num1 < num2;
-    //     break;
-    //   case '>':
-    //     calculatedResult = num1 > num2;
-    //     break;
-    //   case '=':
-    //     calculatedResult = num1 === num2;
-    //     break;
-    //   default:
-    //     setResult('Invalid operator');
-    //     return;
-    // }
-
-    setResult(calculatedResult ? 'True' : 'False');
+    if ( num1 < num2 ) {
+      setResult('Aの方がお得');
+    } else if ( num1 > num2 ) {
+      setResult('Bの方がお得');
+    } else {
+      setResult('同じ');
+    }
   };
 
   return (
@@ -45,22 +32,24 @@ const Calculator = () => {
         placeholder="価格A"
         value={number1}
         onChangeText={text => setNumber1(text)}
-        keyboardType="numeric"
+      />
+      <TextInput
+        placeholder="量（g、ml、個）"
+        value={number2}
+        onChangeText={text => setNumber2(text)}
       />
       <TextInput
         placeholder='価格B'
-        value={number2}
-        onChangeText={text => setNumber2(text)}
-        keyboardType='numeric'
+        value={number3}
+        onChangeText={text => setNumber3(text)}
       />
       <TextInput
-        placeholder="Enter operator (<, >, =)"
-        value={operator}
-        onChangeText={text => setOperator(text)}
-        maxLength={1}
+        placeholder='量（g、ml、個）'
+        value={number4}
+        onChangeText={text => setNumber4(text)}
       />
       <Button title="比較する" onPress={calculate} />
-      {result !== '' && <Text>Result: {result}</Text>}
+      {result !== '' && <Text>{result}</Text>}
     </View>
   );
 };
