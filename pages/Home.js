@@ -8,6 +8,26 @@ const Calculator = () => {
   const [number4, setNumber4] = useState('');
   const [result, setResult] = useState('');
 
+  const containerStyle = {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  }
+  const containerStyle1 = {
+    width: '45%',
+    margin: 5,
+    padding: 10,
+    borderWidth: 1,
+    borderStyle: 'style',
+    borderRadius: 5
+  }
+  const frame = {
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderRadius: 5,
+    height: 50
+  }
+
   const calculate = () => {
     const num1 = number1 / number2;
     const num2 = number3 / number4;
@@ -27,34 +47,42 @@ const Calculator = () => {
   };
 
   return (
+    <>
     <View>
+      <View style={containerStyle}>
+      <View style={containerStyle1}>
       <Text>価格A</Text>
-      <TextInput
+      <TextInput style={frame}
         placeholder = '値段を入力'
         value={number1}
         onChangeText={text => setNumber1(text)}
       />
       <Text>量（g、ml、個）</Text>
-      <TextInput
+      <TextInput style={frame}
         placeholder = '量を入力'
         value={number2}
         onChangeText={text => setNumber2(text)}
       />
+      </View>
+      <View style={containerStyle1}>
       <Text>価格B</Text>
-      <TextInput
+      <TextInput style={frame}
         placeholder = '値段を入力'
         value={number3}
         onChangeText={text => setNumber3(text)}
       />
       <Text>量（g、ml、個）</Text>
-      <TextInput
+      <TextInput style={frame}
         placeholder = '量を入力'
         value={number4}
         onChangeText={text => setNumber4(text)}
       />
+      </View>
+      </View>
       <Button title="比較する" onPress={calculate} />
       {result !== '' && <Text>{result}</Text>}
     </View>
+    </>
   );
 };
 
