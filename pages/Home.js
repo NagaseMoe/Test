@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, Text } from 'react-native';
+import { View, TextInput, Button, Text, ScrollView } from 'react-native';
 
 const Calculator = () => {
   const [number1, setNumber1] = useState('');
@@ -48,7 +48,7 @@ const Calculator = () => {
 
   return (
     <>
-    <View>
+    <ScrollView scrollEnabled={false}>
       <View style={containerStyle}>
       <View style={containerStyle1}>
       <Text>価格A</Text>
@@ -81,7 +81,7 @@ const Calculator = () => {
       </View>
       <Button title="比較する" onPress={calculate} />
       {result !== '' && <Text>{result}</Text>}
-    </View>
+    </ScrollView>
     </>
   );
 };
