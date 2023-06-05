@@ -65,12 +65,14 @@ const Calculator = () => {
         placeholder = '値段を入力'
         value={number1}
         onChangeText={text => setNumber1(text)}
+        keyboardType="numeric"
       />
       <Text>量（g、ml、個）</Text>
       <TextInput style={styles.frame}
         placeholder = '量を入力'
         value={number2}
         onChangeText={text => setNumber2(text)}
+        keyboardType="numeric"
       />
       </View>
       <View style={styles.containerStyle1}>
@@ -79,12 +81,14 @@ const Calculator = () => {
         placeholder = '値段を入力'
         value={number3}
         onChangeText={text => setNumber3(text)}
+        keyboardType="numeric"
       />
       <Text>量（g、ml、個）</Text>
       <TextInput style={styles.frame}
         placeholder = '量を入力'
         value={number4}
         onChangeText={text => setNumber4(text)}
+        keyboardType="numeric"
       />
       </View>
       </View>
