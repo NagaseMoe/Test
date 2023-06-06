@@ -12,8 +12,23 @@ import { FontAwesome5 } from '@expo/vector-icons';
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
+
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+    tabBarOptions={{
+      activeTintColor: '#FBB03A',
+      inactiveTintColor: 'gray',
+      style: {
+        backgroundColor: 'white',
+        borderTopWidth: 1,
+        borderTopColor: 'gray'
+      },
+      labelStyle: {
+        fontSize: 12,
+        fontWeight: 'bold'
+      }
+    }}
+    >
       <Tab.Screen name="比較計算" component={HomeScreen} 
       options={{
         tabBarIcon: ({ color, size }) => (
