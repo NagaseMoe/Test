@@ -26,7 +26,8 @@ const Calculator = () => {
       borderWidth: 1,
       borderStyle: 'solid',
       borderRadius: 15,
-      height: 50
+      height: 50,
+      textAlign: 'center'
     },
     calculatorButton : {
       backgroundColor: '#FBB03A',
@@ -57,39 +58,41 @@ const Calculator = () => {
 
   return (
     <>
-    <ScrollView scrollEnabled={false} containerStyle={{display: 'inlineBlock'}}>
+    <ScrollView scrollEnabled={false}>
       <View style={styles.containerStyle}>
       <View style={styles.containerStyle1}>
-      <Text>価格A</Text>
-      <TextInput style={styles.frame}
-        placeholder = '値段を入力'
-        value={number1}
-        onChangeText={text => setNumber1(text)}
-        keyboardType="numeric"
-      />
-      <Text>量（g、ml、個）</Text>
-      <TextInput style={styles.frame}
-        placeholder = '量を入力'
-        value={number2}
-        onChangeText={text => setNumber2(text)}
-        keyboardType="numeric"
-      />
+        <Text>価格A</Text>
+        <TextInput style={styles.frame}
+          placeholder = '値段を入力'
+          value={number1}
+          onChangeText={text => setNumber1(text)}
+          keyboardType="numeric"
+        />
+        <Text>円</Text>
+        <Text>量（g、ml、個）</Text>
+        <TextInput style={styles.frame}
+          placeholder = '量を入力'
+          value={number2}
+          onChangeText={text => setNumber2(text)}
+          keyboardType="numeric"
+        />
       </View>
       <View style={styles.containerStyle1}>
-      <Text>価格B</Text>
-      <TextInput style={styles.frame}
-        placeholder = '値段を入力'
-        value={number3}
-        onChangeText={text => setNumber3(text)}
-        keyboardType="numeric"
-      />
-      <Text>量（g、ml、個）</Text>
-      <TextInput style={styles.frame}
-        placeholder = '量を入力'
-        value={number4}
-        onChangeText={text => setNumber4(text)}
-        keyboardType="numeric"
-      />
+        <Text>価格B</Text>
+        <TextInput style={styles.frame}
+          placeholder = '値段を入力'
+          value={number3}
+          onChangeText={text => setNumber3(text)}
+          keyboardType="numeric"
+        />
+        <Text>円</Text>
+        <Text>量（g、ml、個）</Text>
+        <TextInput style={styles.frame}
+          placeholder = '量を入力'
+          value={number4}
+          onChangeText={text => setNumber4(text)}
+          keyboardType="numeric"
+        />
       </View>
       </View>
       <TouchableOpacity style={styles.calculatorButton} onPress={calculate}>
