@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { Text, View } from 'react-native';
+import { View, Text, Button } from 'react-native';
 
-function StoreList() {
+const StoreList = ({navigation}) => {
     return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>店舗メモ</Text>
-    </View>
-    )
+      <View>
+        <Text>店舗比較</Text>
+        <Button title="玉ねぎ" onPress={() => navigation.navigate('玉ねぎ')} />
+  </View>
+    );
 }
 
 export default StoreList;
