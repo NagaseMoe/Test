@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { View, Text, Button, FlatList } from 'react-native';
-import { List } from 'react-native-paper';
+import { List, FAB } from 'react-native-paper';
 import format from 'date-fns/format';
 
 const memos = [
@@ -19,19 +19,36 @@ const memos = [
 //     );
 // }
 
-const StoreList = () => {
+const StoreList = ({navigation}) => {
+
+  const onPressAdd = () => {
+    navigation.navigate('メモ詳細');
+  };
+
   return (
     <View style={styles.container}>
       <FlatList
         style={styles.list}
-        data={memos} // (1)
-        keyExtractor={item => `${item.createdAt}`} // (2)
-        renderItem={({ item }) => ( // (3)
-          <List.Item // (4)
+        data={memos}
+        keyExtractor={item => `${item.createdAt}`}
+        renderItem={({ item }) => (
+          <List.Item
             title={item.text}
             description={`作成日時: ${format(item.createdAt, 'yyyy.MM.dd HH:mm')}`}
           />
         )}
+      />
+      <FAB
+        style={{
+          // (2)
+          position: 'absolute',
+          right: 16,
+          bottom: 16,
+          borderRadius: 50,
+          backgroundColor: '#FBB03A' 
+        }}
+        icon="plus"
+        onPress={onPressAdd}
       />
     </View>
   );

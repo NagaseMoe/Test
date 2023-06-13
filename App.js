@@ -6,6 +6,7 @@ import StoreList from './pages/StoreList';
 import DetailsScreen from './pages/Details';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Provider as PaperProvider } from 'react-native-paper';
 
 import { Entypo } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
@@ -17,7 +18,7 @@ const Stack = createStackNavigator();
 const DetailsStackScreen = () => (
   <Stack.Navigator>
     <Stack.Screen name="店舗リスト" component={StoreList} />
-    <Stack.Screen name="玉ねぎ" component={DetailsScreen} />
+    <Stack.Screen name="メモ詳細" component={DetailsScreen} />
   </Stack.Navigator>
 );
 
@@ -59,9 +60,11 @@ const TabScreens = () => (
 
 const App = () => {
   return (
+    <PaperProvider>
     <NavigationContainer>
       <TabScreens />
     </NavigationContainer>
+    </PaperProvider>
   );
 };
 
