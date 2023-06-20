@@ -8,6 +8,8 @@ const Calculator = () => {
   const [number4, setNumber4] = useState('');
   const [result, setResult] = useState('');
 
+  //以下スタイル
+
   const styles ={
     containerStyle : {
       display: 'flex',
@@ -37,6 +39,8 @@ const Calculator = () => {
       textAlign: 'center'
     }
   }
+
+  //
 
   const calculate = () => {
     const num1 = number1 / number2;

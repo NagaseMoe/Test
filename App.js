@@ -8,16 +8,19 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Provider as PaperProvider } from 'react-native-paper';
 
+//Bottom Tabのアイコンの読み込み
 import { Entypo } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
+
+//以下画面遷移のプログラミング
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 const DetailsStackScreen = () => (
   <Stack.Navigator>
-    <Stack.Screen name="店舗リスト" component={StoreList} />
+    <Stack.Screen name="リスト" component={StoreList} />
     <Stack.Screen name="メモ詳細" component={DetailsScreen} />
   </Stack.Navigator>
 );
@@ -43,7 +46,7 @@ const TabScreens = () => (
                 <Entypo name="calculator" size={size} color={color} />
               ),
             }}/>
-    <Tab.Screen name="Todoリスト" component={TodoScreen} 
+    <Tab.Screen name="リスト" component={TodoScreen} 
     options={{
               tabBarIcon: ({ color, size }) => (
                 <Feather name="file-text" size={size} color={color} />
