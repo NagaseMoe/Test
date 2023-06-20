@@ -70,12 +70,4 @@ const App = () => {
     </PaperProvider>
   );
 };
-
-task
-// aaaaaaaa
-//aaaaaiiiii
-
-
-// aiaiaiaiai
 export default App;
-master

@@ -1,38 +1,22 @@
 import * as React from "react";
-import { Text, View } from "react-native";
-import React, { useState, useEffect } from "react";
-import {
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  TextInput,
-  Text,
-  Button,
-  Keyboard,
-} from "react-native";
-
-function TodoScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Todoリスト</Text>
-    </View>
-
-  );
-}
+import { Text, View, TouchableOpacity, TextInput, Keyboard,} from "react-native";
+import { useState, useEffect } from "react";
 
 // 追加部分
-export default function App() {
+function TodoScreen() {
   const [inputFields, setInputFields] = useState([
     { id: Date.now(), value: "", checked: false },
   ]);
+
+//keyborad
   const [keyboardStatus, setKeyboardStatus] = useState("");
 
   useEffect(() => {
-    const showSubscription = Keyboard.addListener("keyboardDidShow", () => {
-      setKeyboardStatus("Keyboard Shown");
+    const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
+      setKeyboardStatus();
     });
-    const hideSubscription = Keyboard.addListener("keyboardDidHide", () => {
-      setKeyboardStatus("Keyboard Hidden");
+    const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
+      setKeyboardStatus();
     });
 
     return () => {
@@ -40,6 +24,7 @@ export default function App() {
       hideSubscription.remove();
     };
   }, []);
+
 
   const addInput = () => {
     setInputFields([
@@ -80,6 +65,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.status}>{keyboardStatus}</Text>
       {inputFields.map((inputField) => (
         <View key={inputField.id} style={styles.inputContainer}>
           <TouchableOpacity onPress={() => handleCheckboxChange(inputField.id)}>
@@ -115,7 +101,7 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
+const styles = {
   container: {
     flex: 1,
     padding: 16,
@@ -175,6 +161,6 @@ const styles = StyleSheet.create({
     marginTop: 16,
     textAlign: "center",
   },
-});
+};
 
 export default TodoScreen;
