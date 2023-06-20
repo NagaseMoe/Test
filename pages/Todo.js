@@ -1,5 +1,12 @@
 import * as React from "react";
-import { Text, View, TouchableOpacity, TextInput, Keyboard, ScrollView} from "react-native";
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  TextInput,
+  Keyboard,
+  ScrollView,
+} from "react-native";
 import { useState, useEffect } from "react";
 
 // 追加部分
@@ -8,14 +15,14 @@ function TodoScreen() {
     { id: Date.now(), value: "", checked: false },
   ]);
 
-//keyborad
+  //keyborad
   const [keyboardStatus, setKeyboardStatus] = useState("");
 
   useEffect(() => {
-    const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
+    const showSubscription = Keyboard.addListener("keyboardDidShow", () => {
       setKeyboardStatus();
     });
-    const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
+    const hideSubscription = Keyboard.addListener("keyboardDidHide", () => {
       setKeyboardStatus();
     });
 
@@ -25,7 +32,7 @@ function TodoScreen() {
     };
   }, []);
 
-
+  // addInput : 新しい入力フィールドを追加する
   const addInput = () => {
     setInputFields([
       ...inputFields,
@@ -33,6 +40,7 @@ function TodoScreen() {
     ]);
   };
 
+  // handleInputChange : テキスト入力の変更イベントを処理する
   const handleInputChange = (text, id) => {
     const updatedInputFields = inputFields.map((field) => {
       if (field.id === id) {
@@ -43,6 +51,7 @@ function TodoScreen() {
     setInputFields(updatedInputFields);
   };
 
+  // handleCheckboxChange : チェックボックスの変更イベントを処理する
   const handleCheckboxChange = (id) => {
     const updatedInputFields = inputFields.map((field) => {
       if (field.id === id) {
@@ -53,11 +62,13 @@ function TodoScreen() {
     setInputFields(updatedInputFields);
   };
 
+  // removeInput : 指定されたIDの入力フィールドを削除する
   const removeInput = (id) => {
     const updatedInputFields = inputFields.filter((field) => field.id !== id);
     setInputFields(updatedInputFields);
   };
 
+  // removeCheckedInputs : チェックされた入力フィールドを削除する
   const removeCheckedInputs = () => {
     const updatedInputFields = inputFields.filter((field) => !field.checked);
     setInputFields(updatedInputFields);
@@ -68,40 +79,44 @@ function TodoScreen() {
     ・<ScrollView>で画面上をタップするとkeyboradが隠れる
     */
     <ScrollView scrollEnabled={false}>
-    <View style={styles.container}>
-      <Text style={styles.status}>{keyboardStatus}</Text>
-      {inputFields.map((inputField) => (
-        <View key={inputField.id} style={styles.inputContainer}>
-          <TouchableOpacity onPress={() => handleCheckboxChange(inputField.id)}>
-            <View
-              style={[
-                styles.checkbox,
-                inputField.checked
-                  ? styles.checkedCheckbox
-                  : styles.uncheckedCheckbox,
-              ]}
+      <View style={styles.container}>
+        <Text style={styles.status}>{keyboardStatus}</Text>
+        {inputFields.map((inputField) => (
+          <View key={inputField.id} style={styles.inputContainer}>
+            <TouchableOpacity
+              onPress={() => handleCheckboxChange(inputField.id)}
             >
-              {inputField.checked && <Text style={styles.checkboxText}>✓</Text>}
-            </View>
+              <View
+                style={[
+                  styles.checkbox,
+                  inputField.checked
+                    ? styles.checkedCheckbox
+                    : styles.uncheckedCheckbox,
+                ]}
+              >
+                {inputField.checked && (
+                  <Text style={styles.checkboxText}>✓</Text>
+                )}
+              </View>
+            </TouchableOpacity>
+            <TextInput
+              style={styles.input}
+              value={inputField.value}
+              onChangeText={(text) => handleInputChange(text, inputField.id)}
+              autoFocus={true}
+            />
+          </View>
+        ))}
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.button} onPress={addInput}>
+            <Text style={styles.buttonText}>プラス</Text>
           </TouchableOpacity>
-          <TextInput
-            style={styles.input}
-            value={inputField.value}
-            onChangeText={(text) => handleInputChange(text, inputField.id)}
-            autoFocus={true}
-          />
+          <TouchableOpacity style={styles.button} onPress={removeCheckedInputs}>
+            <Text style={styles.buttonText}>削除</Text>
+          </TouchableOpacity>
         </View>
-      ))}
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={addInput}>
-          <Text style={styles.buttonText}>プラス</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={removeCheckedInputs}>
-          <Text style={styles.buttonText}>削除</Text>
-        </TouchableOpacity>
+        <Text style={styles.status}>{keyboardStatus}</Text>
       </View>
-      <Text style={styles.status}>{keyboardStatus}</Text>
-    </View>
     </ScrollView>
   );
 }
