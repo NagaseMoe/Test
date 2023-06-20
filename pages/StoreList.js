@@ -2,6 +2,7 @@ import * as React from 'react';
 import { View, Text, Button, FlatList } from 'react-native';
 import { List, FAB } from 'react-native-paper';
 import format from 'date-fns/format';
+import { ScrollView } from 'react-native-web';
 
 const memos = [
   {
@@ -10,15 +11,6 @@ const memos = [
   },
 ];
 
-// const StoreList = ({navigation}) => {
-//     return (
-//       <View>
-//         <Text>店舗比較</Text>
-//         <Button title="玉ねぎ" onPress={() => navigation.navigate('玉ねぎ')} />
-//   </View>
-//     );
-// }
-
 const StoreList = ({navigation}) => {
 
   const onPressAdd = () => {
@@ -26,6 +18,7 @@ const StoreList = ({navigation}) => {
   };
 
   return (
+    <ScrollView scrollEnabled={true}>
     <View style={styles.container}>
       <FlatList
         style={styles.list}
@@ -40,17 +33,18 @@ const StoreList = ({navigation}) => {
       />
       <FAB
         style={{
-          // (2)
           position: 'absolute',
           right: 16,
           bottom: 16,
           borderRadius: 50,
-          backgroundColor: '#FBB03A' 
+          backgroundColor: '#FBB03A',
+          color: "white"
         }}
         icon="plus"
         onPress={onPressAdd}
       />
     </View>
+    </ScrollView>
   );
 }
 
