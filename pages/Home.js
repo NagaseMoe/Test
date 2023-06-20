@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity, Text, ScrollView } from 'react-native';
+import { View, TextInput, TouchableOpacity, Text, ScrollView, SafeAreaView } from 'react-native';
 
 const Calculator = () => {
   const [number1, setNumber1] = useState('');
@@ -43,6 +43,7 @@ const Calculator = () => {
   //
 
   const calculate = () => {
+    //計算式
     const num1 = number1 / number2;
     const num2 = number3 / number4;
 
@@ -50,7 +51,6 @@ const Calculator = () => {
       setResult('値が入力されていません');
       return;
     }
-
     if ( num1 < num2 ) {
       setResult('Aの方がお得');
     } else if ( num1 > num2 ) {
@@ -58,12 +58,17 @@ const Calculator = () => {
     } else {
       setResult('同じ');
     }
+    //setResult = {result}
+    //setResultの内容が{result}に反映される
+    //setResultの中身を貰った画像に変える
   };
 
   return (
     <>
+    <SafeAreaView>
     <ScrollView scrollEnabled={true}>
       <View style={styles.containerStyle}>
+      {result !== '' && <Text>{result}</Text>}
       <View style={styles.containerStyle1}>
         <Text>価格A</Text>
         <TextInput style={styles.frame}
@@ -102,8 +107,8 @@ const Calculator = () => {
       <TouchableOpacity style={styles.calculatorButton} onPress={calculate}>
         <Text style={{ color: 'white', padding: 15 , textAlign: 'center'}}>比較する</Text>
       </TouchableOpacity>
-        {result !== '' && <Text>{result}</Text>}
     </ScrollView>
+    </SafeAreaView>
     </>
   );
 };
