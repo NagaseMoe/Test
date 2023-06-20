@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text, View, TouchableOpacity, TextInput, Keyboard,} from "react-native";
+import { Text, View, TouchableOpacity, TextInput, Keyboard, ScrollView} from "react-native";
 import { useState, useEffect } from "react";
 
 // 追加部分
@@ -64,6 +64,7 @@ function TodoScreen() {
   };
 
   return (
+    <ScrollView scrollEnabled={false}>
     <View style={styles.container}>
       <Text style={styles.status}>{keyboardStatus}</Text>
       {inputFields.map((inputField) => (
@@ -98,6 +99,7 @@ function TodoScreen() {
       </View>
       <Text style={styles.status}>{keyboardStatus}</Text>
     </View>
+    </ScrollView>
   );
 }
 
@@ -138,7 +140,6 @@ const styles = {
     borderColor: "gray",
     paddingHorizontal: 8,
     paddingVertical: 0,
-    alignSelf: "stretch",
   },
   buttonContainer: {
     marginTop: 16,
