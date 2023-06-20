@@ -62,7 +62,7 @@ const Calculator = () => {
 
   return (
     <>
-    <ScrollView scrollEnabled={false}>
+    <ScrollView scrollEnabled={true}>
       <View style={styles.containerStyle}>
       <View style={styles.containerStyle1}>
         <Text>価格A</Text>

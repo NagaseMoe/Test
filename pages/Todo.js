@@ -6,6 +6,7 @@ import {
   TextInput,
   Keyboard,
   ScrollView,
+  SafeAreaView
 } from "react-native";
 import { useState, useEffect } from "react";
 
@@ -78,7 +79,8 @@ function TodoScreen() {
     /*
     ・<ScrollView>で画面上をタップするとkeyboradが隠れる
     */
-    <ScrollView scrollEnabled={false}>
+   <SafeAreaView>
+    <ScrollView scrollEnabled={true} style={styles.scrollView}>
       <View style={styles.container}>
         <Text style={styles.status}>{keyboardStatus}</Text>
         {inputFields.map((inputField) => (
@@ -118,6 +120,7 @@ function TodoScreen() {
         <Text style={styles.status}>{keyboardStatus}</Text>
       </View>
     </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -180,6 +183,9 @@ const styles = {
     marginTop: 16,
     textAlign: "center",
   },
+  scrollView: {
+    marginHorizontal: 20,
+},
 };
 
 export default TodoScreen;
