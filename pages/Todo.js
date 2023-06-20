@@ -64,6 +64,9 @@ function TodoScreen() {
   };
 
   return (
+    /*
+    ・<ScrollView>で画面上をタップするとkeyboradが隠れる
+    */
     <ScrollView scrollEnabled={false}>
     <View style={styles.container}>
       <Text style={styles.status}>{keyboardStatus}</Text>
