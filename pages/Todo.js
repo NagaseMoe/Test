@@ -111,7 +111,7 @@ function TodoScreen() {
         ))}
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.button} onPress={addInput}>
-            <Text style={styles.buttonText}>プラス</Text>
+            <Text style={styles.buttonText}>+</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={removeCheckedInputs}>
             <Text style={styles.buttonText}>削除</Text>
@@ -130,6 +130,7 @@ const styles = {
     padding: 16,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "white",
   },
   inputContainer: {
     flexDirection: "row",
@@ -137,28 +138,26 @@ const styles = {
     marginVertical: 8,
   },
   checkbox: {
-    width: 20,
-    height: 20,
-    borderWidth: 2,
-    borderColor: "gray",
+    width: 36,
+    height: 36,
+    borderWidth: 1,
+    borderColor: "#888888",
     justifyContent: "center",
     alignItems: "center",
-  },
-  checkedCheckbox: {
-    backgroundColor: "green",
+    borderRadius: 8,
   },
   uncheckedCheckbox: {
     backgroundColor: "transparent",
   },
   checkboxText: {
-    color: "white",
+    color: "#FBB03A",
   },
   input: {
     flex: 1,
     height: 60,
     borderBottomWidth: 1,
     borderTopWidth: 1,
-    borderColor: "gray",
+    borderColor: "#DADADA",
     paddingHorizontal: 8,
     paddingVertical: 0,
   },
@@ -169,15 +168,15 @@ const styles = {
     alignItems: "center",
   },
   button: {
-    backgroundColor: "#000",
+    backgroundColor: "#fff",
     paddingHorizontal: 16,
     paddingVertical: 8,
     borderRadius: 4,
     marginRight: 8, // 追加
   },
   buttonText: {
-    color: "#fff",
-    fontSize: 16,
+    color: "#FBB03A",
+    fontSize: 40,
   },
   status: {
     marginTop: 16,
