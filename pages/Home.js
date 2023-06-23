@@ -33,7 +33,7 @@ const Calculator = () => {
     },
     calculatorButton : {
       backgroundColor: '#FBB03A',
-      width: '80%',
+      width: '50%',
       margin: 15,
       borderRadius: 15,
       textAlign: 'center',
