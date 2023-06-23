@@ -11,6 +11,11 @@ const Calculator = () => {
   //以下スタイル
 
   const styles ={
+    containerStyle : {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center',
+    },
     containerStyle1 : {
       width: '45%',
       margin: 5,
