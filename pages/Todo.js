@@ -127,7 +127,7 @@ function TodoScreen() {
 const styles = {
   container: {
     flex: 1,
-    padding: 16,
+    padding: 10,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "white",
@@ -154,24 +154,33 @@ const styles = {
   },
   input: {
     flex: 1,
-    height: 60,
+    height: 86,
     borderBottomWidth: 1,
     borderTopWidth: 1,
     borderColor: "#DADADA",
     paddingHorizontal: 8,
     paddingVertical: 0,
+    fontSize: 24,
   },
   buttonContainer: {
     marginTop: 16,
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center",
+    shadowColor: "#000",
+  shadowOffset: {
+    width: 0,
+    height: 4,
+  },
+  shadowOpacity: 0.2,
+  shadowRadius: 6,
+  elevation: 5,
   },
   button: {
     backgroundColor: "#fff",
     paddingHorizontal: 16,
     paddingVertical: 8,
-    borderRadius: 4,
+    borderRadius: 9,
     marginRight: 8, // 追加
   },
   buttonText: {
