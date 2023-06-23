@@ -1,26 +1,39 @@
 import * as React from 'react';
-import { View, Text, Button, FlatList } from 'react-native';
-import { List, FAB } from 'react-native-paper';
+import { View, Text, Button, FlatList, ScrollView, SafeAreaView } from 'react-native';
+import { List, FAB, Avatar, Card, IconButton } from 'react-native-paper';
 import format from 'date-fns/format';
-import { ScrollView } from 'react-native-web';
 
-const memos = [
-  {
-    text: "メモメモメモ",
-    createdAt: 1585574700000, // 2020.03.30 22:25
-  },
-];
+// const memos = [
+//   {
+//     text: "メモメモメモ",
+//     createdAt: 1585574700000, // 2020.03.30 22:25
+//   },
+// ];
+
+
 
 const StoreList = ({navigation}) => {
 
+  //日付
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth();
+  const day = now.getDay();
+
+  const formattedDate = `${year}.${month}.${day}`;
+
+  //+マーク押したらメモ詳細ページに移行
   const onPressAdd = () => {
     navigation.navigate('メモ詳細');
   };
 
   return (
-    <ScrollView scrollEnabled={true}>
     <View style={styles.container}>
-      <FlatList
+      <Card.Title
+        title="Card Title"
+        subtitle={`最終更新日：${formattedDate}`}
+      />
+      {/* <FlatList
         style={styles.list}
         data={memos}
         keyExtractor={item => `${item.createdAt}`}
@@ -30,7 +43,7 @@ const StoreList = ({navigation}) => {
             description={`作成日時: ${format(item.createdAt, 'yyyy.MM.dd HH:mm')}`}
           />
         )}
-      />
+      /> */}
       <FAB
         style={{
           position: 'absolute',
@@ -44,7 +57,6 @@ const StoreList = ({navigation}) => {
         onPress={onPressAdd}
       />
     </View>
-    </ScrollView>
   );
 }
 
