@@ -179,7 +179,7 @@ const styles = {
   button: {
     backgroundColor: "#fff",
     paddingHorizontal: 16,
-    paddingVertical: 8,
+    paddingVertical: 4,
     borderRadius: 50,
     marginRight: 8, // 追加
   },
