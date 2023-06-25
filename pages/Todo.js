@@ -180,7 +180,7 @@ const styles = {
     backgroundColor: "#fff",
     paddingHorizontal: 16,
     paddingVertical: 8,
-    borderRadius: 9,
+    borderRadius: 50,
     marginRight: 8, // 追加
   },
   buttonText: {
