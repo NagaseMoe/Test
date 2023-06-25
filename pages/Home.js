@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity, Text, ScrollView, SafeAreaView } from 'react-native';
+import { View, TextInput, TouchableOpacity, Text, ScrollView, SafeAreaView, StyleSheet } from 'react-native';
+// import { StyleSheet } from 'react-native-web';
 
 const Calculator = () => {
   const [number1, setNumber1] = useState('');
@@ -7,40 +8,6 @@ const Calculator = () => {
   const [number3, setNumber3] = useState('');
   const [number4, setNumber4] = useState('');
   const [result, setResult] = useState('');
-
-  //以下スタイル
-
-  const styles ={
-    containerStyle : {
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'center',
-    },
-    containerStyle1 : {
-      width: '45%',
-      margin: 5,
-      padding: 10,
-      borderWidth: 1,
-      borderStyle: 'style',
-      borderRadius: 15
-    },
-    frame : {
-      borderWidth: 1,
-      borderStyle: 'solid',
-      borderRadius: 15,
-      height: 50,
-      textAlign: 'center'
-    },
-    calculatorButton : {
-      backgroundColor: '#FBB03A',
-      width: '80%',
-      margin: 15,
-      borderRadius: 15,
-      textAlign: 'center'
-    }
-  }
-
-  //
 
   const calculate = () => {
     //計算式
@@ -65,7 +32,8 @@ const Calculator = () => {
 
   return (
     <>
-    <SafeAreaView>
+    <View style={styles.container}>
+    <SafeAreaView style={{backgroundColor: "#fff"}}>
     <ScrollView scrollEnabled={true}>
       <View style={styles.containerStyle}>
       {result !== '' && <Text>{result}</Text>}
@@ -104,13 +72,54 @@ const Calculator = () => {
         />
       </View>
       </View>
-      <TouchableOpacity style={styles.calculatorButton} onPress={calculate}>
-        <Text style={{ color: 'white', padding: 15 , textAlign: 'center'}}>比較する</Text>
-      </TouchableOpacity>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center",}}>
+        <TouchableOpacity style={styles.calculatorButton} onPress={calculate}>
+          <Text style={styles.calculatorButtonText}>比較する</Text>
+        </TouchableOpacity>
+      </View>
     </ScrollView>
     </SafeAreaView>
+    </View>
     </>
   );
 };
+
+const styles = StyleSheet.create ({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+  containerStyle : {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  containerStyle1 : {
+    width: '45%',
+    margin: 5,
+    padding: 10,
+    borderWidth: 1,
+    borderStyle: 'style',
+    borderRadius: 15
+  },
+  frame : {
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderRadius: 15,
+    height: 50,
+    textAlign: 'center'
+  },
+  calculatorButton : {
+    backgroundColor: '#FBB03A',
+    margin: 15,
+    borderRadius: 15,
+    width: "80%",
+  },
+  calculatorButtonText : {
+    color: 'white',
+    padding: 15 ,
+    textAlign: 'center',
+  }
+});
 
 export default Calculator;
