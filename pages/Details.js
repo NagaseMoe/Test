@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 
 const DetailsScreen = () => {
   //以下はデフォルトで表示されているコンポーネント
+  const [selectedValue, setSelectedValue] = useState('');
   const [components, setComponents] = useState([
     <View key={0} style={styles.containerStyle}>
       <View style={[styles.pulldownStyle, { width: '30%' }]}>
