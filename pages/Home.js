@@ -33,7 +33,7 @@ const Calculator = () => {
   return (
     <>
     <View style={styles.container}>
-    <Image style={{width: 323, height: 223,}} source={require('../assets/top.png')} />
+    <Image style={{alignSelf: 'center', width: 323, height: 223}} source= {require('../assets/top.png')} />
     <SafeAreaView style={{backgroundColor: "#fff"}}>
     <ScrollView scrollEnabled={true}>
       <View style={styles.containerStyle}>
