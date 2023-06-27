@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { View, TextInput, TouchableOpacity, Text, ScrollView, SafeAreaView, Image } from 'react-native';
+=======
 import { View, TextInput, TouchableOpacity, Text, ScrollView, SafeAreaView, StyleSheet } from 'react-native';
 // import { StyleSheet } from 'react-native-web';
 
@@ -32,8 +34,11 @@ const Calculator = () => {
 
   return (
     <>
-    <View style={styles.container}>
-    <SafeAreaView style={{backgroundColor: "#fff"}}>
+  <View>
+  <Image style={{width: 323, height: 223}} source= {require['./assets/top.png']} />
+    <SafeAreaView>
+=======
+    <View style={styles.cotainer}>
     <ScrollView scrollEnabled={true}>
       <View style={styles.containerStyle}>
       {result !== '' && <Text>{result}</Text>}
