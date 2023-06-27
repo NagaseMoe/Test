@@ -62,7 +62,7 @@ const DetailsScreen = () => {
             ]}
           />
         </View>
-        <View style={styles.textflex}>
+      <View style={styles.textflex}>
         <View style={styles.pulldownStyle}>
           <Text style={styles.textStyle}>量</Text>
           <TextInput
