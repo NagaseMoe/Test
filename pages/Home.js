@@ -118,8 +118,9 @@ const styles = StyleSheet.create ({
   },
   calculatorButtonText : {
     color: 'white',
-    padding: 15 ,
+    padding: 12 ,
     textAlign: 'center',
+    fontSize: 24,
   }
 });
 
