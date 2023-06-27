@@ -6,7 +6,8 @@ import {
   TextInput,
   Keyboard,
   ScrollView,
-  SafeAreaView
+  SafeAreaView,
+  StyleSheet
 } from "react-native";
 import { useState, useEffect } from "react";
 
@@ -79,9 +80,10 @@ function TodoScreen() {
     /*
     ・<ScrollView>で画面上をタップするとkeyboradが隠れる
     */
-   <SafeAreaView>
+  <View style={styles.container}>
+    <View style={{width: "85%"}}>
+   <SafeAreaView style={{backgroundColor:"#fff"}}>
     <ScrollView scrollEnabled={true} style={styles.scrollView}>
-      <View style={styles.container}>
         <Text style={styles.status}>{keyboardStatus}</Text>
         {inputFields.map((inputField) => (
           <View key={inputField.id} style={styles.inputContainer}>
@@ -118,19 +120,18 @@ function TodoScreen() {
           </TouchableOpacity>
         </View>
         <Text style={styles.status}>{keyboardStatus}</Text>
-      </View>
     </ScrollView>
     </SafeAreaView>
+    </View>
+    </View>
   );
 }
 
-const styles = {
+const styles = StyleSheet.create ({
   container: {
     flex: 1,
-    padding: 10,
-    justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "white",
+    backgroundColor: "#fff",
   },
   inputContainer: {
     flexDirection: "row",
@@ -141,7 +142,7 @@ const styles = {
     width: 36,
     height: 36,
     borderWidth: 1,
-    borderColor: "#888888",
+    borderColor: "#f0f0f0",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 8,
@@ -151,12 +152,12 @@ const styles = {
   },
   checkboxText: {
     color: "#FBB03A",
+    fontSize: 24,
   },
   input: {
     flex: 1,
-    height: 86,
+    height: 65,
     borderBottomWidth: 1,
-    borderTopWidth: 1,
     borderColor: "#DADADA",
     paddingHorizontal: 8,
     paddingVertical: 0,
@@ -179,8 +180,8 @@ const styles = {
   button: {
     backgroundColor: "#fff",
     paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 9,
+    paddingVertical: 4,
+    borderRadius: 50,
     marginRight: 8, // 追加
   },
   buttonText: {
@@ -191,9 +192,9 @@ const styles = {
     marginTop: 16,
     textAlign: "center",
   },
-  scrollView: {
-    marginHorizontal: 20,
-},
-};
+//   scrollView: {
+//     marginHorizontal: 20,
+// },
+});
 
 export default TodoScreen;
