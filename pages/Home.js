@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity, Text, ScrollView, SafeAreaView } from 'react-native';
+import { View, TextInput, TouchableOpacity, Text, ScrollView, SafeAreaView, Image } from 'react-native';
 
 const Calculator = () => {
   const [number1, setNumber1] = useState('');
@@ -73,6 +73,8 @@ const Calculator = () => {
 
   return (
     <>
+  <View>
+  <Image style={{width: 323, height: 223}} source= {require['./assets/top.png']} />
     <SafeAreaView>
     <ScrollView scrollEnabled={true}>
       <View style={styles.containerStyle}>
@@ -117,6 +119,7 @@ const Calculator = () => {
       </TouchableOpacity>
     </ScrollView>
     </SafeAreaView>
+    </View>
     </>
   );
 };
