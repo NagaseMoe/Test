@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity, Text, ScrollView, SafeAreaView, Image } from 'react-native';
-=======
-import { View, TextInput, TouchableOpacity, Text, ScrollView, SafeAreaView, StyleSheet } from 'react-native';
+import { View, TextInput, TouchableOpacity, Text, ScrollView, SafeAreaView, StyleSheet, Image } from 'react-native';
 // import { StyleSheet } from 'react-native-web';
 
 const Calculator = () => {
@@ -34,11 +32,9 @@ const Calculator = () => {
 
   return (
     <>
-  <View>
-  <Image style={{width: 323, height: 223}} source= {require['./assets/top.png']} />
-    <SafeAreaView>
-=======
-    <View style={styles.cotainer}>
+    <View style={styles.container}>
+    <Image style={{width: 323, height: 223}} source= {require['./assets/top.png']} />
+    <SafeAreaView style={{backgroundColor: "#fff"}}>
     <ScrollView scrollEnabled={true}>
       <View style={styles.containerStyle}>
       {result !== '' && <Text>{result}</Text>}
