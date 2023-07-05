@@ -39,16 +39,17 @@ const Calculator = () => {
       <View style={styles.containerStyle}>
       {result !== '' && <Text>{result}</Text>}
       <View style={styles.containerStyle1}>
-        <Text>価格A</Text>
+        <Image style={{width: 70, height: 70}} source= {require('../assets/A.png')} />
+        <Text style={styles.priceText}>価格</Text>
         <TextInput style={styles.frame}
           placeholder = '値段を入力'
           value={number1}
           onChangeText={text => setNumber1(text)}
           keyboardType="numeric"
         />
-        <Text>円</Text>
-        <Text>量（g、ml、個）</Text>
-        <TextInput style={styles.frame}
+        <Text style={styles.currencyText}>円</Text>
+        <Text style={styles.priceText}>量</Text>
+        <TextInput style={styles.amountframe}
           placeholder = '量を入力'
           value={number2}
           onChangeText={text => setNumber2(text)}
@@ -56,7 +57,8 @@ const Calculator = () => {
         />
       </View>
       <View style={styles.containerStyle1}>
-        <Text>価格B</Text>
+        <Image style={{width: 70, height: 70}} source= {require('../assets/B.png')} />
+        <Text style={styles.priceText}>価格</Text>
         <TextInput style={styles.frame}
           placeholder = '値段を入力'
           value={number3}
@@ -64,8 +66,8 @@ const Calculator = () => {
           keyboardType="numeric"
         />
         <Text>円</Text>
-        <Text>量（g、ml、個）</Text>
-        <TextInput style={styles.frame}
+        <Text style={styles.priceText}>量</Text>
+        <TextInput style={styles.amountframe}
           placeholder = '量を入力'
           value={number4}
           onChangeText={text => setNumber4(text)}
@@ -108,7 +110,16 @@ const styles = StyleSheet.create ({
     borderStyle: 'solid',
     borderRadius: 15,
     height: 50,
-    textAlign: 'center'
+    textAlign: 'center',
+    width: 136
+  },
+  amountframe : {
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderRadius: 15,
+    height: 50,
+    textAlign: 'center',
+    width: 156
   },
   calculatorButton : {
     backgroundColor: '#FBB03A',
@@ -121,7 +132,11 @@ const styles = StyleSheet.create ({
     padding: 12 ,
     textAlign: 'center',
     fontSize: 24,
-  }
+    fontWeight: 'bold'
+  },
+  priceText: {
+    fontSize: 20, // 好みのサイズに変更してください
+  },
 });
 
 export default Calculator;

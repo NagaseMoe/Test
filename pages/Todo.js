@@ -7,7 +7,8 @@ import {
   Keyboard,
   ScrollView,
   SafeAreaView,
-  StyleSheet
+  StyleSheet,
+  Image
 } from "react-native";
 import { useState, useEffect } from "react";
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -129,7 +130,7 @@ function TodoScreen() {
     ・<ScrollView>で画面上をタップするとkeyboradが隠れる
     */
   <View style={styles.container}>
-    <View style={{width: "85%"}}>
+    <View style={{width: "100%"}}>
    <SafeAreaView style={{backgroundColor:"#fff"}}>
     <ScrollView scrollEnabled={true} style={styles.scrollView}>
         <Text style={styles.status}>{keyboardStatus}</Text>
