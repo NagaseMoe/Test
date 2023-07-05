@@ -41,6 +41,7 @@ const Calculator = () => {
       <View style={styles.containerStyle1}>
         <Image style={{width: 70, height: 70}} source= {require('../assets/A.png')} />
         <Text style={styles.priceText}>価格</Text>
+        <View style={styles.textflex}>
         <TextInput style={styles.frame}
           placeholder = '値段を入力'
           value={number1}
@@ -48,6 +49,8 @@ const Calculator = () => {
           keyboardType="numeric"
         />
         <Text style={styles.currencyText}>円</Text>
+        </View>
+
         <Text style={styles.priceText}>量</Text>
         <TextInput style={styles.amountframe}
           placeholder = '量を入力'
@@ -59,13 +62,17 @@ const Calculator = () => {
       <View style={styles.containerStyle1}>
         <Image style={{width: 70, height: 70}} source= {require('../assets/B.png')} />
         <Text style={styles.priceText}>価格</Text>
+
+        <View style={styles.textflex}>
         <TextInput style={styles.frame}
           placeholder = '値段を入力'
           value={number3}
           onChangeText={text => setNumber3(text)}
           keyboardType="numeric"
         />
-        <Text>円</Text>
+        <Text style={styles.currencyText}>円</Text>
+      </View>
+
         <Text style={styles.priceText}>量</Text>
         <TextInput style={styles.amountframe}
           placeholder = '量を入力'
@@ -137,6 +144,11 @@ const styles = StyleSheet.create ({
   priceText: {
     fontSize: 20, // 好みのサイズに変更してください
   },
+  textflex: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 });
+
 
 export default Calculator;
