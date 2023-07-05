@@ -11,14 +11,19 @@ import {
   Image
 } from "react-native";
 import { useState, useEffect } from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// 追加部分
+// 各テキストボックスのデータを独立した状態変数に格納する
 function TodoScreen() {
   const [inputFields, setInputFields] = useState([
     { id: Date.now(), value: "", checked: false },
   ]);
 
-  //keyborad
+    // 各テキストボックスの値を格納する状態変数
+    const [textValues, setTextValues] = useState([""]);
+    
+
+  //keyborad--------------------------
   const [keyboardStatus, setKeyboardStatus] = useState("");
 
   useEffect(() => {
@@ -34,6 +39,9 @@ function TodoScreen() {
       hideSubscription.remove();
     };
   }, []);
+  //keyborad終了--------------------------
+
+  // メイン機能------------------------------
 
   // addInput : 新しい入力フィールドを追加する
   const addInput = () => {
@@ -43,8 +51,8 @@ function TodoScreen() {
     ]);
   };
 
-  // handleInputChange : テキスト入力の変更イベントを処理する
-  const handleInputChange = (text, id) => {
+   // handleInputChange : テキスト入力の変更イベントを処理する
+   const handleInputChange = (text, id) => {
     const updatedInputFields = inputFields.map((field) => {
       if (field.id === id) {
         return { ...field, value: text };
@@ -53,6 +61,7 @@ function TodoScreen() {
     });
     setInputFields(updatedInputFields);
   };
+  
 
   // handleCheckboxChange : チェックボックスの変更イベントを処理する
   const handleCheckboxChange = (id) => {
@@ -75,7 +84,46 @@ function TodoScreen() {
   const removeCheckedInputs = () => {
     const updatedInputFields = inputFields.filter((field) => !field.checked);
     setInputFields(updatedInputFields);
+    saveDataToStorage(); //データの保存
   };
+  // メイン機能終了---------------------
+
+  // AsyncStorage-----------------------
+  // データ保存
+  const saveDataToStorage = async () => {
+    try {
+      const data = JSON.stringify(inputFields);//JSON形式の文字列に変換
+      await AsyncStorage.setItem("todoData", data);//todoDataに対応するデータとして変換されたデータを保存
+      console.log("Data saved successfully.",inputFields);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // データ読み込み
+  const loadDataFromStorage = async () => {
+    try {
+      const data = await AsyncStorage.getItem("todoData");
+      if (data) {
+        const parsedData = JSON.parse(data);
+        setInputFields(parsedData);
+        console.log("Data loaded successfully.",inputFields);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // アプリ再起動時に実行、起動前のデータを呼び出す
+  useEffect(() => {
+    loadDataFromStorage();
+  }, []);
+
+  // inputFieldsが変更されるたびに保存
+  useEffect(() => {
+    saveDataToStorage();
+  }, [inputFields]);
+  // 終了-------------
 
   return (
     /*
@@ -108,7 +156,7 @@ function TodoScreen() {
               style={styles.input}
               value={inputField.value}
               onChangeText={(text) => handleInputChange(text, inputField.id)}
-              autoFocus={true}
+              onBlur={saveDataToStorage}
             />
           </View>
         ))}
