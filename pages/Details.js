@@ -40,7 +40,8 @@ function DetailsScreen () {
         <View style={styles.container}>
             <SafeAreaView style={{backgroundColor:"#fff"}}>
                 <ScrollView scrollEnabled={true}>
-                    <View style={styles.containerStyle}>
+                    {inputDetails.map((inputDetails) => (
+                        <View key={inputDetails.id} style={styles.containerStyle}>
                         <View style={[styles.pulldownStyle, { width: '30%' }]}>
                             <Text style={styles.textStyle}>店舗名</Text>
                             <TextInput
@@ -77,6 +78,7 @@ function DetailsScreen () {
                                 <Text>円</Text>
                         </View>
                     </View>
+                    ))}
                     <View style={styles.buttonContainer}>
                         <TouchableOpacity style={styles.button} onPress={addComponent}>
                             <Text style={styles.buttonText}>+</Text>
