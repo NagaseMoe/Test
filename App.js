@@ -30,14 +30,22 @@ const TabScreens = () => (
   tabBarOptions={{
           activeTintColor: '#FBB03A',
           inactiveTintColor: 'gray',
-          style: {
-            backgroundColor: 'white',
-            borderTopWidth: 1,
-            borderTopColor: 'gray'
-          },
           labelStyle: {
             fontSize: 12,
             fontWeight: 'bold'
+          },
+          style: {
+            backgroundColor: 'white',
+            borderTopLeftRadius: 25,
+            borderTopRightRadius: 25,
+            elevation: 5,
+            shadowColor: '#000',
+            shadowOffset: {
+              width: 0,
+              height: -4,
+            },
+            shadowOpacity: 0.2,
+            shadowRadius: 6,
           }
         }}>
     <Tab.Screen name="比較計算" component={Calculator} 
@@ -45,18 +53,64 @@ const TabScreens = () => (
               tabBarIcon: ({ color, size }) => (
                 <Entypo name="calculator" size={size} color={color} />
               ),
+              headerStyle: {
+                shadowColor: "#000",
+                shadowOffset: {
+                  width: 0,
+                  height: 4,
+                },
+                shadowOpacity: 0.2,
+                shadowRadius: 6,
+                elevation: 5,
+                borderBottomLeftRadius: 25,
+                borderBottomRightRadius: 25,
+              },
+              headerTitleStyle: {
+                color: '#FBB03A',
+              }
+              
             }}/>
     <Tab.Screen name="リスト" component={TodoScreen} 
     options={{
               tabBarIcon: ({ color, size }) => (
                 <Feather name="file-text" size={size} color={color} />
               ),
+              headerStyle: {
+                shadowColor: "#000",
+                shadowOffset: {
+                  width: 0,
+                  height: 4,
+                },
+                shadowOpacity: 0.2,
+                shadowRadius: 6,
+                elevation: 5,
+                borderBottomLeftRadius: 25,
+                borderBottomRightRadius: 25,
+              },
+              headerTitleStyle: {
+                color: '#FBB03A'
+              }
             }}/>
     <Tab.Screen name="店舗比較" component={DetailsStackScreen} 
     options={{
               tabBarIcon: ({ color, size }) => (
                 <FontAwesome5 name="store" size={size} color={color} />
               ),
+              headerStyle: {
+                shadowColor: "#000",
+                shadowOffset: {
+                  width: 0,
+                  height: 4,
+                },
+                shadowOpacity: 0.2,
+                shadowRadius: 6,
+                elevation: 5,
+                borderBottomLeftRadius: 25,
+                borderBottomRightRadius: 25,
+              },
+              headerTitleStyle: {
+                color: '#FBB03A'
+              }
             }}/>
   </Tab.Navigator>
 );

@@ -33,13 +33,19 @@ const Calculator = () => {
   return (
     <>
     <View style={styles.container}>
-    <Image style={{alignSelf: 'center', width: 323, height: 223}} source= {require('../assets/top.png')} />
+    <Image style={{marginTop:20, alignSelf: 'center', width: 323, height: 223}} source= {require('../assets/top.png')} />
       <SafeAreaView style={{backgroundColor: "#fff"}}>
         <ScrollView scrollEnabled={true}>
           <View style={styles.containerStyle}>
             {result !== '' && <Text>{result}</Text>}
               <View style={styles.containerStyle1}>
-                <Image style={{width: 70, height: 70}} source= {require('../assets/A.png')} />
+                <Image style={{
+                    marginTop: 10,
+                    marginLeft: 40, 
+                    marginBottom: 15,
+                    width: 70, 
+                    height: 70
+                }} source= {require('../assets/sA.png')} />
                 <Text style={styles.priceText}>価格</Text>
                   <View style={styles.textflex}>
                     <TextInput style={styles.frame}
@@ -58,7 +64,13 @@ const Calculator = () => {
               </View>
 
               <View style={styles.containerStyle1}>
-                <Image style={{width: 70, height: 70}} source= {require('../assets/B.png')} />
+                <Image style={{
+                    marginTop: 10,
+                    marginLeft: 40,
+                    marginBottom: 15,
+                    width: 70, 
+                    height: 70
+                    }} source= {require('../assets/sB.png')} />
                 <Text style={styles.priceText}>価格</Text>
                   <View style={styles.textflex}>
                     <TextInput style={styles.frame}
@@ -104,8 +116,6 @@ const styles = StyleSheet.create ({
     margin: 5,
     padding: 10,
     backgroundColor: '#fff',
-    // borderWidth: 1,
-    // borderStyle: 'style',
     borderRadius: 15,
     shadowColor: "#000",
   shadowOffset: {
@@ -122,7 +132,8 @@ const styles = StyleSheet.create ({
     borderRadius: 15,
     height: 50,
     textAlign: 'center',
-    width: 136
+    width: 136,
+    marginBottom: 10
   },
   amountframe : {
     borderWidth: 1,
@@ -130,11 +141,12 @@ const styles = StyleSheet.create ({
     borderRadius: 15,
     height: 50,
     textAlign: 'center',
-    width: 156
+    width: 156,
+    marginBottom: 20
   },
   calculatorButton : {
     backgroundColor: '#FBB03A',
-    margin: 15,
+    margin: 25,
     borderRadius: 15,
     width: "80%",
     shadowColor: "#000",
