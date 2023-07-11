@@ -20,8 +20,15 @@ const Stack = createStackNavigator();
 
 const DetailsStackScreen = () => (
   <Stack.Navigator>
-    <Stack.Screen name="リスト" component={StoreList} />
-    <Stack.Screen name="メモ詳細" component={DetailsScreen} />
+    <Stack.Screen
+      name="リスト"
+      component={StoreList}
+      options={{ headerShown: false }} // ヘッダーを非表示にする
+    />
+    <Stack.Screen
+      name="メモ詳細"
+      component={DetailsScreen} 
+    />
   </Stack.Navigator>
 );
 
