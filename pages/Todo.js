@@ -11,7 +11,7 @@ import {
   Image
 } from "react-native";
 import { useState, useEffect } from "react";
-import { FAB } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // 各テキストボックスのデータを独立した状態変数に格納する
@@ -162,36 +162,20 @@ function TodoScreen() {
           </View>
         ))}
         <View style={styles.buttonContainer}>
-          {/* <TouchableOpacity style={styles.button} onPress={removeCheckedInputs}>
-            <Text style={styles.buttonText}>削除</Text>
-          </TouchableOpacity> */}
+          <Icon name="delete-circle"
+            size={50} 
+            borderRadius= "50"
+            color={'#FBB03A'}
+            onPress={removeCheckedInputs} 
+          />
+          <Icon name= "plus-circle" 
+            size={60} 
+            borderRadius= "50"
+            color={'#FBB03A'}
+            backgroundColor={'white'}
+            onPress={addInput} 
+          />
         </View>
-          <FAB
-            style={{
-              // position: 'absolute',
-              // right: 16,
-              // bottom: 16,
-              width: 55,
-              height: 55,
-              borderRadius: 50,
-              backgroundColor: 'white',
-            }}
-              labelStyle={{color: '#FBB03A'}} 
-              icon="plus" onPress={addInput}
-          />
-          <FAB 
-            style={{
-              // position: 'absolute',
-              // left: 16,
-              // bottom: 16,
-              width: 55,
-              height: 55,
-              borderRadius: 50,
-              backgroundColor: 'white',
-              Color: '#FBB03A'
-            }}
-            icon="delete" onPress={removeCheckedInputs} 
-          />
         <Text style={styles.status}>{keyboardStatus}</Text>
     </ScrollView>
     </SafeAreaView>
@@ -239,26 +223,7 @@ const styles = StyleSheet.create ({
   buttonContainer: {
     // marginTop: 200,
     flexDirection: "row",
-    // justifyContent: "flex-end",
-  },
-  button: {
-    backgroundColor: "#fff",
-    paddingHorizontal: 16,
-    paddingVertical: 4,
-    marginRight: 8, // 追加
-    borderRadius: 50,
-    shadowColor: "#000",
-    shadowOffset: {
-    width: 0,
-    height: 4,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 6,
-    elevation: 5,
-  },
-  buttonText: {
-    color: "#FBB03A",
-    fontSize: 40,
+    justifyContent: "flex-end",
   },
   status: {
     marginTop: 16,
