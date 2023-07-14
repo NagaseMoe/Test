@@ -69,7 +69,8 @@ const TabScreens = () => (
                 color: '#FBB03A',
               }
               
-            }}/>
+            }}
+    />
     <Tab.Screen name="リスト" component={TodoScreen} 
     options={{
               tabBarIcon: ({ color, size }) => (
@@ -90,7 +91,8 @@ const TabScreens = () => (
               headerTitleStyle: {
                 color: '#FBB03A'
               }
-            }}/>
+            }}
+    />
     <Tab.Screen name="店舗比較" component={DetailsStackScreen} 
     options={{
               tabBarIcon: ({ color, size }) => (
@@ -111,7 +113,8 @@ const TabScreens = () => (
               headerTitleStyle: {
                 color: '#FBB03A'
               }
-            }}/>
+            }}
+    />
   </Tab.Navigator>
 );
 

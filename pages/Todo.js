@@ -132,7 +132,7 @@ function TodoScreen() {
     */
   <View style={styles.container}>
     <View style={{width: "90%"}}>
-   <SafeAreaView style={{backgroundColor:"#fff"}}>
+    <SafeAreaView style={{backgroundColor:"#fff"}}>
     <ScrollView scrollEnabled={true} style={styles.scrollView}>
         <Text style={styles.status}>{keyboardStatus}</Text>
         {inputFields.map((inputField) => (
@@ -199,7 +199,7 @@ const styles = StyleSheet.create ({
     width: 36,
     height: 36,
     borderWidth: 1,
-    borderColor: "#f0f0f0",
+    borderColor: '#888888',
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 8,
