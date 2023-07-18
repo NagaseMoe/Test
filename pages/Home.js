@@ -66,6 +66,18 @@ const Calculator = () => {
   return (
     <>
       <ScrollView scrollEnabled={false}>
+        <View>
+        <Text>{result}</Text>
+            {result === "Aの方がお得" && (
+              <Image style={{marginTop:20, alignSelf: 'center', width: 323, height: 223}} source={require("../assets/maybeA.png")} />
+            )}
+            {result === "Bの方がお得" && (
+              <Image  style={{marginTop:20, alignSelf: 'center', width: 323, height: 223}} source={require("../assets/maubeB.png")} />
+            )}
+            {result === "同じ" && (
+              <Image  style={{marginTop:20, alignSelf: 'center', width: 323, height: 223}} source={require("../assets/top.png")} />
+            )}
+        </View>
         <View style={styles.containerStyle}>
           <View style={styles.containerStyle1}>
             <Text>価格A</Text>
@@ -113,16 +125,7 @@ const Calculator = () => {
         </TouchableOpacity>
         {result !== "" && (
           <>
-            <Text>{result}</Text>
-            {result === "Aの方がお得" && (
-              <Image style={{marginTop:20, alignSelf: 'center', width: 323, height: 223}} source={require("../assets/maybeA.png")} />
-            )}
-            {result === "Bの方がお得" && (
-              <Image  style={{marginTop:20, alignSelf: 'center', width: 323, height: 223}} source={require("../assets/maubeB.png")} />
-            )}
-            {result === "同じ" && (
-              <Image  style={{marginTop:20, alignSelf: 'center', width: 323, height: 223}} source={require("../assets/top.png")} />
-            )}
+            
           </>
         )}
       </ScrollView>
