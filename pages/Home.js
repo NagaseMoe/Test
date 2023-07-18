@@ -6,7 +6,7 @@ const Calculator = () => {
   const [number2, setNumber2] = useState('');
   const [number3, setNumber3] = useState('');
   const [number4, setNumber4] = useState('');
-  const [result, setResult] = useState('');
+  const [result, setResult] = useState('同じ');
 
   //以下スタイル
 
@@ -60,6 +60,9 @@ const Calculator = () => {
     }
   };
 
+  const showTopImage = !number1 || !number2 || !number3 || !number4 || result === '同じ';
+
+
   return (
     <>
       <ScrollView scrollEnabled={false}>
@@ -112,13 +115,13 @@ const Calculator = () => {
           <>
             <Text>{result}</Text>
             {result === "Aの方がお得" && (
-              <Image source={require("../assets/maybeA.png")} />
+              <Image style={{marginTop:20, alignSelf: 'center', width: 323, height: 223}} source={require("../assets/maybeA.png")} />
             )}
             {result === "Bの方がお得" && (
-              <Image source={require("../assets/maubeB.png")} />
+              <Image  style={{marginTop:20, alignSelf: 'center', width: 323, height: 223}} source={require("../assets/maubeB.png")} />
             )}
             {result === "同じ" && (
-              <Image source={require("../assets/top.png")} />
+              <Image  style={{marginTop:20, alignSelf: 'center', width: 323, height: 223}} source={require("../assets/top.png")} />
             )}
           </>
         )}
