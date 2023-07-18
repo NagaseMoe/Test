@@ -161,26 +161,27 @@ function TodoScreen() {
             />
           </View>
         ))}
-        <View style={styles.buttonContainer}>
-          <Icon name="delete-circle"
-            size={50} 
-            borderRadius= "50"
-            color={'#FBB03A'}
-            onPress={removeCheckedInputs} 
-          />
+        <View style={styles.deleteContainer}>  
           <Icon name= "plus-circle" 
             size={60} 
             borderRadius= "50"
             color={'#FBB03A'}
-            backgroundColor={'white'}
             onPress={addInput} 
+          />
+        </View>
+        <View style={styles.buttonContainer}>
+          <Icon name="delete-circle"
+            size={60} 
+            borderRadius= "50"
+            color={'#FBB03A'}
+            onPress={removeCheckedInputs} 
           />
         </View>
         <Text style={styles.status}>{keyboardStatus}</Text>
     </ScrollView>
     </SafeAreaView>
     </View>
-    </View>
+  </View>
   );
 }
 
@@ -221,9 +222,14 @@ const styles = StyleSheet.create ({
     fontSize: 24,
   },
   buttonContainer: {
-    // marginTop: 200,
-    flexDirection: "row",
+    // flexDirection: "row",
     justifyContent: "flex-end",
+    alignItems: "flex-end",
+  },
+  deleteContainer: {
+    // marginTop: 60,
+    // flexDirection: "row",
+    justifyContent: "flex-start",
   },
   status: {
     marginTop: 16,
