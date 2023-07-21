@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   StyleSheet,
   Image,
+  Keyboard,
 } from "react-native";
 // import { StyleSheet } from 'react-native-web';
 
@@ -41,6 +42,10 @@ const Calculator = () => {
 
   const showTopImage =
     !number1 || !number2 || !number3 || !number4 || result === "同じ";
+
+    const handleInputDone = () => {
+      Keyboard.dismiss();
+    }
 
   return (
     <>
@@ -105,6 +110,8 @@ const Calculator = () => {
                     value={number1}
                     onChangeText={(text) => setNumber1(text)}
                     keyboardType="numeric"
+                    returnKeyType="done"
+                    onSubmitEditing={handleInputDone}
                   />
                   <Text style={styles.currencyText}>円</Text>
                 </View>
@@ -115,6 +122,8 @@ const Calculator = () => {
                   value={number2}
                   onChangeText={(text) => setNumber2(text)}
                   keyboardType="numeric"
+                  returnKeyType="done"
+                  onSubmitEditing={handleInputDone}
                 />
               </View>
 
@@ -137,6 +146,8 @@ const Calculator = () => {
                     value={number3}
                     onChangeText={(text) => setNumber3(text)}
                     keyboardType="numeric"
+                    returnKeyType="done"
+                    onSubmitEditing={handleInputDone}
                   />
                   <Text style={styles.currencyText}>円</Text>
                 </View>
@@ -147,6 +158,8 @@ const Calculator = () => {
                   value={number4}
                   onChangeText={(text) => setNumber4(text)}
                   keyboardType="numeric"
+                  returnKeyType="done"
+                  onSubmitEditing={handleInputDone}
                 />
               </View>
             </View>
