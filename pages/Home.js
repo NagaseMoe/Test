@@ -109,14 +109,16 @@ const Calculator = () => {
                   <Text style={styles.currencyText}>円</Text>
                 </View>
                 <Text style={styles.priceText}>量</Text>
-                <TextInput
-                  style={styles.amountframe}
-                  placeholder="量を入力"
-                  value={number2.state.pinCode}
+                <CustomInput
                   keyboardType="number-pad"
-                  onChangeText={(text) => this.setNumber2({pinCode: text})}
-                  // onChangeText={(text) => setNumber2(text)}
-                  // keyboardType="numeric"
+                  value={number2}
+                  onChangeText={(text) => setNumber2(text)}
+                  placeholder={"量を入力"}
+                  hidePlaceholder={true}
+                  maxLength={6}
+                  styleInput={styles.amountframe}
+                  autoFocusKeyboard={true}
+                  blurOnSubmit={false}
                 />
               </View>
 
