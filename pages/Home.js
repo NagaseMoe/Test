@@ -8,7 +8,6 @@ import {
   SafeAreaView,
   StyleSheet,
   Image,
-  CustomInput
 } from "react-native";
 // import { StyleSheet } from 'react-native-web';
 
@@ -110,7 +109,7 @@ const Calculator = () => {
                   <Text style={styles.currencyText}>円</Text>
                 </View>
                 <Text style={styles.priceText}>量</Text>
-                <CustomInput
+                <TextInput
                   keyboardType="number-pad"
                   value={number2}
                   onChangeText={(text) => setNumber2(text)}
