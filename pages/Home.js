@@ -112,8 +112,10 @@ const Calculator = () => {
                 <TextInput
                   style={styles.amountframe}
                   placeholder="量を入力"
-                  value={number2}
-                  onChangeText={(text) => setNumber2(text)}
+                  value={number2.state.pinCode}
+                  keyboardType="number-pad"
+                  onChangeText={(text) => this.setNumber2({pinCode: text})}
+                  // onChangeText={(text) => setNumber2(text)}
                   // keyboardType="numeric"
                 />
               </View>
