@@ -114,11 +114,7 @@ const Calculator = () => {
                   value={number2}
                   onChangeText={(text) => setNumber2(text)}
                   placeholder={"量を入力"}
-                  hidePlaceholder={true}
-                  maxLength={6}
                   styleInput={styles.amountframe}
-                  autoFocusKeyboard={true}
-                  blurOnSubmit={false}
                 />
               </View>
 
