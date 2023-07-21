@@ -8,6 +8,7 @@ import {
   SafeAreaView,
   StyleSheet,
   Image,
+  CustomInput
 } from "react-native";
 // import { StyleSheet } from 'react-native-web';
 
