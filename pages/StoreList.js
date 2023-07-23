@@ -1,52 +1,165 @@
-import * as React from 'react';
-import { View, Text, Button, FlatList, ScrollView, SafeAreaView, StyleSheet } from 'react-native';
-import { List, FAB, Avatar, Card, IconButton } from 'react-native-paper';
-import format from 'date-fns/format';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import React, { useState, useEffect } from 'react';
+import { View, Text, Button, TextInput, Modal, StyleSheet, TouchableOpacity } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import Details from './Details';
 
+const StoreList = ({ navigation }) => {
+  const [stores, setStores] = useState([]);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [newStoreName, setNewStoreName] = useState('');
 
-const StoreList = ({navigation}) => {
+  useEffect(() => {
+    loadStoresFromStorage();
+  }, []);
 
+  const loadStoresFromStorage = async () => {
+    try {
+      const storedStores = await AsyncStorage.getItem('stores');
+      if (storedStores !== null) {
+        setStores(JSON.parse(storedStores));
+      }
+    } catch (error) {
+      console.error('Error loading stores from AsyncStorage:', error);
+    }
+  };
 
-//+マーク押したらメモ詳細ページに移行
-const onPressAdd = () => {
-  navigation.navigate('メモ詳細');
-};
+  const handleAddStore = () => {
+    setIsModalVisible(true);
+  };
 
+  const handleModalClose = () => {
+    setIsModalVisible(false);
+    setNewStoreName('');
+  };
 
-return (
-  <View style={styles.container}>
-    <Card.Title
-      title="Card Title"
-    />
-    <View style={styles.buttonContainer}>
-      <Icon name= "plus-circle"
-        size={60}
-        borderRadius= "50"
-        color={'#FBB03A'}
-        backgroundColor={'white'}
-        onPress={onPressAdd}
-      />
+  const handleStoreAdded = async () => {
+    if (newStoreName.trim() === '') return;
+
+    const newStore = { name: newStoreName };
+    setStores([...stores, newStore]);
+    await saveStoreToStorage(newStore);
+
+    setIsModalVisible(false);
+    setNewStoreName('');
+  };
+
+  const saveStoreToStorage = async (store) => {
+    try {
+      const storedStores = await AsyncStorage.getItem('stores');
+      let stores = [];
+      if (storedStores !== null) {
+        stores = JSON.parse(storedStores);
+      }
+      stores.push(store);
+      await AsyncStorage.setItem('stores', JSON.stringify(stores));
+    } catch (error) {
+      console.error('Error saving store to AsyncStorage:', error);
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.header}>リスト</Text>
+      {stores.map((store, index) => (
+        <TouchableOpacity
+          key={index}
+          onPress={() => navigation.navigate('メモ詳細', { store })}
+          style={styles.storeButton}
+        >
+          <Text>{store.name}</Text>
+        </TouchableOpacity>
+      ))}
+      <TouchableOpacity style={styles.addButton} onPress={handleAddStore}>
+        <Text style={styles.addButtonText}>新規追加</Text>
+      </TouchableOpacity>
+
+      <Modal visible={isModalVisible} animationType="fade" transparent={true} onRequestClose={handleModalClose}>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalHeader}>商品名入力</Text>
+            <TextInput
+              value={newStoreName}
+              onChangeText={setNewStoreName}
+              placeholder="商品名"
+              style={styles.textInput}
+            />
+            <TouchableOpacity style={styles.addButton} onPress={handleStoreAdded}>
+              <Text style={styles.addButtonText}>追加</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.cancelButton} onPress={handleModalClose}>
+              <Text style={styles.cancelButtonText}>キャンセル</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </View>
-  </View>
   );
-}
-
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    padding: 16,
+    backgroundColor: '#ffffff',
   },
-  list: {
+  header: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 16,
+  },
+  storeButton: {
+    marginBottom: 8,
+    backgroundColor: '#fff',
+    padding: 16,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  addButton: {
+    backgroundColor: '#FBB03A',
+    padding: 16,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginTop: 16,
+  },
+  addButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
+  },
+  modalContainer: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
-  buttonContainer: {
-    // marginTop: 200,
-    flexDirection: "row",
-    justifyContent: "flex-end",
+  modalContent: {
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    padding: 16,
+    width: '80%',
+  },
+  modalHeader: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 16,
+    textAlign: 'center',
+  },
+  textInput: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 8,
+    padding: 8,
+    marginBottom: 16,
+  },
+  cancelButton: {
+    backgroundColor: '#ccc',
+    padding: 16,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  cancelButtonText: {
+    color: '#fff',
+    fontWeight: 'bold',
   },
 });
-
 
 export default StoreList;
