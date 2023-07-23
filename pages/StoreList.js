@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, TextInput, Modal, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Button, TextInput, Modal, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Details from './Details';
 
@@ -59,7 +59,9 @@ const StoreList = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>リスト</Text>
+      <ScrollView>
+        <SafeAreaView>
+        <Text style={styles.header}>リスト</Text>
       {stores.map((store, index) => (
         <TouchableOpacity
           key={index}
@@ -92,6 +94,8 @@ const StoreList = ({ navigation }) => {
           </View>
         </View>
       </Modal>
+        </SafeAreaView>
+      </ScrollView>
     </View>
   );
 };
@@ -100,7 +104,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#f8f8f8',
   },
   header: {
     fontSize: 24,
@@ -108,7 +112,6 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   storeButton: {
-    marginBottom: 8,
     backgroundColor: '#fff',
     padding: 16,
     borderRadius: 8,
