@@ -7,7 +7,7 @@
     "icon": "./assets/apicon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/roding.png",
+      "image": "./assets/loding.png",
       "resizeMode": "contain",
       "backgroundColor": "#FBB03A"
     },
