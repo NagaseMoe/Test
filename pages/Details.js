@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Swipeout from 'react-native-swipeout';
 
 const Details = ({ route, navigation }) => {
   const { store } = route.params;
@@ -35,6 +36,7 @@ const Details = ({ route, navigation }) => {
     }
   };
 
+  //追加ボタンがクリックされた場合、同じコンポーネントを増やす動作
   const addComponent = () => {
     const newComponent = {
       id: inputDetails.length + 1,
@@ -69,11 +71,12 @@ const Details = ({ route, navigation }) => {
     );
   };
 
-//   const removeComponent = (id) => {
-//     setInputDetails((prevDetails) =>
-//       prevDetails.filter((details) => details.id !== id)
-//     );
-//   };
+  //削除機能
+  const removeComponent = (id) => {
+    setInputDetails((prevDetails) =>
+      prevDetails.filter((details) => details.id !== id)
+    );
+  };
 
   return (
     <View style={styles.container}>
@@ -83,6 +86,17 @@ const Details = ({ route, navigation }) => {
 
           {/* 入力情報のコンポーネントをマップして表示 */}
           {inputDetails.map((details) => (
+            <Swipeout
+              key={details.id}
+              right={[{
+                text: '削除',
+                backgroundColor: 'red',
+                onPress: () => removeComponent(details.id),
+              }]}
+              autoClose={true}
+              backgroundColor='transparent'
+              style={styles.removeButton}
+            >
             <View key={details.id} style={styles.containerStyle}>
               <View style={[styles.pulldownStyle, { width: '30%' }]}>
                 <Text style={styles.textStyle}>店舗名</Text>
@@ -119,18 +133,14 @@ const Details = ({ route, navigation }) => {
                 </View>
                 <Text>円</Text>
               </View>
-              {/* <TouchableOpacity onPress={() => removeComponent(details.id)}>
-                <Text>削除</Text>
-              </TouchableOpacity> */}
             </View>
+            </Swipeout>
           ))}
 
           {/* "追加"ボタンを表示 */}
           <TouchableOpacity style={styles.saveButton} onPress={addComponent}>
             <Text style={styles.buttonText}>追加</Text>
           </TouchableOpacity>
-
-          {/* 保存ボタンは不要です */}
         </ScrollView>
       </SafeAreaView>
     </View>
@@ -197,19 +207,15 @@ const styles = StyleSheet.create({
         fontSize: 18,
         padding: 10,
     },
+    removeButton: {
+      borderRadius: 5,
+    },
   saveButton: {
     backgroundColor: '#FBB03A',
     padding: 16,
     borderRadius: 8,
     alignItems: 'center',
   },
-//   goBackButton: {
-//     backgroundColor: '#ccc',
-//     padding: 16,
-//     borderRadius: 8,
-//     alignItems: 'center',
-//     marginTop: 16,
-//   },
   buttonText: {
     color: '#fff',
     fontWeight: 'bold',

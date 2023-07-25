@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Button, TextInput, Modal, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Details from './Details';
+import Swipeout from 'react-native-swipeout';
 
 const StoreList = ({ navigation }) => {
   const [stores, setStores] = useState([]);
@@ -57,12 +57,30 @@ const StoreList = ({ navigation }) => {
     }
   };
 
+  //削除機能
+  const removeStore = async (storeName) => {
+    const updatedStores = stores.filter((store) => store.name !== storeName);
+    setStores(updatedStores);
+    await AsyncStorage.setItem('stores', JSON.stringify(updatedStores));
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView>
         <SafeAreaView>
         <Text style={styles.header}>リスト</Text>
       {stores.map((store, index) => (
+        <Swipeout
+          key={index}
+          right={[{
+            text: '削除',
+            backgroundColor: 'red',
+            onPress: () => removeStore(store.name),
+          }]}
+          autoClose={true}
+          backgroundColor='transparent'
+          style={styles.removeButton}
+        >
         <TouchableOpacity
           key={index}
           onPress={() => navigation.navigate('メモ詳細', { store })}
@@ -70,6 +88,7 @@ const StoreList = ({ navigation }) => {
         >
           <Text>{store.name}</Text>
         </TouchableOpacity>
+        </Swipeout>
       ))}
       <TouchableOpacity style={styles.addButton} onPress={handleAddStore}>
         <Text style={styles.addButtonText}>新規追加</Text>
@@ -163,6 +182,9 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: 'bold',
   },
+  removeButton: {
+    borderRadius: 5,
+  }
 });
 
 export default StoreList;
