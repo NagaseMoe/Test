@@ -43,15 +43,17 @@ const Calculator = () => {
   const showTopImage =
     !number1 || !number2 || !number3 || !number4 || result === "同じ";
 
-    const handleInputDone = () => {
-      Keyboard.dismiss();
-    }
+  const handleInputDone = () => {
+    Keyboard.dismiss();
+  };
 
   return (
     <>
       <View style={styles.container}>
         <View>
-          <Text>{result}</Text>
+          {/* resultの値に応じて表示・非表示を切り替える */}
+          {result !== "同じ" && result !== "Aの方がお得" && result !== "Bの方がお得" && <Text>{result}</Text>}
+
           {result === "Aの方がお得" && (
             <Image
               style={{
@@ -128,39 +130,41 @@ const Calculator = () => {
               </View>
 
               <View style={styles.containerStyle1}>
-                <Image
-                  style={{
-                    marginTop: 10,
-                    marginLeft: 40,
-                    marginBottom: 15,
-                    width: 70,
-                    height: 70,
-                  }}
-                  source={require("../assets/sB.png")}
-                />
-                <Text style={styles.priceText}>価格</Text>
-                <View style={styles.textflex}>
+                <View>
+                  <Image
+                    style={{
+                      marginTop: 10,
+                      marginLeft: 40,
+                      marginBottom: 15,
+                      width: 70,
+                      height: 70,
+                    }}
+                    source={require("../assets/sB.png")}
+                  />
+                  <Text style={styles.priceText}>価格</Text>
+                  <View style={styles.textflex}>
+                    <TextInput
+                      style={styles.frame}
+                      placeholder="値段を入力"
+                      value={number3}
+                      onChangeText={(text) => setNumber3(text)}
+                      keyboardType="numeric"
+                      returnKeyType="done"
+                      onSubmitEditing={handleInputDone}
+                    />
+                    <Text style={styles.currencyText}>円</Text>
+                  </View>
+                  <Text style={styles.priceText}>量</Text>
                   <TextInput
-                    style={styles.frame}
-                    placeholder="値段を入力"
-                    value={number3}
-                    onChangeText={(text) => setNumber3(text)}
+                    style={styles.amountframe}
+                    placeholder="量を入力"
+                    value={number4}
+                    onChangeText={(text) => setNumber4(text)}
                     keyboardType="numeric"
                     returnKeyType="done"
                     onSubmitEditing={handleInputDone}
                   />
-                  <Text style={styles.currencyText}>円</Text>
                 </View>
-                <Text style={styles.priceText}>量</Text>
-                <TextInput
-                  style={styles.amountframe}
-                  placeholder="量を入力"
-                  value={number4}
-                  onChangeText={(text) => setNumber4(text)}
-                  keyboardType="numeric"
-                  returnKeyType="done"
-                  onSubmitEditing={handleInputDone}
-                />
               </View>
             </View>
 
@@ -186,6 +190,9 @@ const Calculator = () => {
 };
 
 const styles = StyleSheet.create({
+   leftTextContainer: {
+    display: "none",
+  },
   container: {
     flex: 1,
     backgroundColor: "#fff",
