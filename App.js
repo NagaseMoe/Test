@@ -81,7 +81,7 @@ const TabScreens = () => (
             width: 0,
             height: 4,
           },
-          shadowOpacity: 0.2,
+          shadowOpacity: 0.1,
           shadowRadius: 6,
           elevation: 5,
           borderBottomLeftRadius: 25,
@@ -105,7 +105,7 @@ const TabScreens = () => (
             width: 0,
             height: 4,
           },
-          shadowOpacity: 0.2,
+          shadowOpacity: 0.1,
           shadowRadius: 6,
           elevation: 5,
           borderBottomLeftRadius: 25,
@@ -129,7 +129,7 @@ const TabScreens = () => (
             width: 0,
             height: 4,
           },
-          shadowOpacity: 0.2,
+          shadowOpacity: 0.1,
           shadowRadius: 6,
           elevation: 5,
           borderBottomLeftRadius: 25,
@@ -154,3 +154,4 @@ const App = () => {
 };
 
 export default App;
+

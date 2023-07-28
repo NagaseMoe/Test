@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Swipeout from 'react-native-swipeout';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Details = ({ route, navigation }) => {
   const { store } = route.params;
@@ -139,7 +140,14 @@ const Details = ({ route, navigation }) => {
 
           {/* "追加"ボタンを表示 */}
           <TouchableOpacity style={styles.saveButton} onPress={addComponent}>
-            <Text style={styles.buttonText}>追加</Text>
+          <View style={styles.deleteContainer}>  
+            <Icon name= "plus-circle" 
+              size={60} 
+              borderRadius= "50"
+              color={'#FBB03A'}
+              onPress={addComponent} 
+            />
+          </View>
           </TouchableOpacity>
         </ScrollView>
       </SafeAreaView>
@@ -209,12 +217,9 @@ const styles = StyleSheet.create({
     removeButton: {
       borderRadius: 5,
     },
-  saveButton: {
-    backgroundColor: '#FBB03A',
-    padding: 16,
-    borderRadius: 8,
-    alignItems: 'center',
-    marginTop: 10,
+  deleteContainer: {
+    marginTop: 40,
+    justifyContent: "flex-start",
   },
   buttonText: {
     color: '#fff',
