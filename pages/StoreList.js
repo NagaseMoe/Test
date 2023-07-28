@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, TextInput, Modal, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native';
+import { View, Text, Button, TextInput, Modal, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView, Keyboard } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Swipeout from 'react-native-swipeout';
 
@@ -64,6 +64,10 @@ const StoreList = ({ navigation }) => {
     await AsyncStorage.setItem('stores', JSON.stringify(updatedStores));
   };
 
+  const handleInputDone = () => {
+    Keyboard.dismiss();
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -105,6 +109,8 @@ const StoreList = ({ navigation }) => {
               onChangeText={setNewStoreName}
               placeholder="商品名"
               style={styles.textInput}
+              returnKeyType="done"
+              onSubmitEditing={handleInputDone}
             />
             <View style={styles.modalButton}>
               <TouchableOpacity style={styles.addButton} onPress={handleStoreAdded}>

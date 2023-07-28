@@ -40,6 +40,10 @@ function TodoScreen() {
       hideSubscription.remove();
     };
   }, []);
+
+  const handleInputDone = () => {
+    Keyboard.dismiss();
+  };
   //keyborad終了--------------------------
 
   // メイン機能------------------------------
@@ -158,6 +162,8 @@ function TodoScreen() {
               value={inputField.value}
               onChangeText={(text) => handleInputChange(text, inputField.id)}
               onBlur={saveDataToStorage}
+              returnKeyType="done"
+              onSubmitEditing={handleInputDone}
             />
           </View>
         ))}

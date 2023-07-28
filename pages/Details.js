@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native';
+import { View,Text, TextInput, Button, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView, Keyboard } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Swipeout from 'react-native-swipeout';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -79,6 +79,10 @@ const Details = ({ route, navigation }) => {
     );
   };
 
+  const handleInputDone = () => {
+    Keyboard.dismiss();
+  };
+
   return (
     <View style={styles.container}>
       <SafeAreaView>
@@ -106,6 +110,8 @@ const Details = ({ route, navigation }) => {
                   placeholder="店舗名"
                   value={details.memo}
                   onChangeText={(text) => handleMemoChange(text, details.id)}
+                  returnKeyType="done"
+                  onSubmitEditing={handleInputDone}
                 />
               </View>
               <View style={styles.textflex}>
@@ -117,6 +123,8 @@ const Details = ({ route, navigation }) => {
                     keyboardType="numeric"
                     value={details.ryou}
                     onChangeText={(text) => handleRyouChange(text, details.id)}
+                    returnKeyType="done"
+                    onSubmitEditing={handleInputDone}
                   />
                 </View>
                 <Text>あたり</Text>
@@ -130,6 +138,8 @@ const Details = ({ route, navigation }) => {
                     keyboardType="numeric"
                     value={details.price}
                     onChangeText={(text) => handlePriceChange(text, details.id)}
+                    returnKeyType="done"
+                    onSubmitEditing={handleInputDone}
                   />
                 </View>
                 <Text>円</Text>
@@ -212,7 +222,6 @@ const styles = StyleSheet.create({
     textInputStyle: {
         fontSize: 18,
         padding: 10,
-        textAlign: 'center',
     },
     removeButton: {
       borderRadius: 5,
