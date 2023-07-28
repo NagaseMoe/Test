@@ -86,13 +86,15 @@ const StoreList = ({ navigation }) => {
           onPress={() => navigation.navigate('メモ詳細', { store })}
           style={styles.storeButton}
         >
-          <Text>{store.name}</Text>
+          <Text style={styles.storeText}>{store.name}</Text>
         </TouchableOpacity>
         </Swipeout>
       ))}
-      <TouchableOpacity style={styles.addButton} onPress={handleAddStore}>
-        <Text style={styles.addButtonText}>新規追加</Text>
-      </TouchableOpacity>
+      <View style={styles.newaddContainer}>
+        <TouchableOpacity style={styles.newaddButton} onPress={handleAddStore}>
+          <Text style={styles.addButtonText}>新規追加</Text>
+        </TouchableOpacity>
+      </View>
 
       <Modal visible={isModalVisible} animationType="fade" transparent={true} onRequestClose={handleModalClose}>
         <View style={styles.modalContainer}>
@@ -104,12 +106,14 @@ const StoreList = ({ navigation }) => {
               placeholder="商品名"
               style={styles.textInput}
             />
-            <TouchableOpacity style={styles.addButton} onPress={handleStoreAdded}>
-              <Text style={styles.addButtonText}>追加</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.cancelButton} onPress={handleModalClose}>
-              <Text style={styles.cancelButtonText}>キャンセル</Text>
-            </TouchableOpacity>
+            <View style={styles.modalButton}>
+              <TouchableOpacity style={styles.addButton} onPress={handleStoreAdded}>
+                <Text style={styles.addButtonText}>追加</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.cancelButton} onPress={handleModalClose}>
+                <Text style={styles.cancelButtonText}>キャンセル</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </Modal>
@@ -123,29 +127,42 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    backgroundColor: '#f8f8f8',
+    backgroundColor: '#fff',
   },
   header: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 16,
+    textAlign: 'center',
   },
   storeButton: {
     backgroundColor: '#fff',
     padding: 16,
     borderRadius: 8,
-    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderColor: "#DADADA",
   },
-  addButton: {
+  storeText: {
+    fontSize: 24,
+  },
+  newaddContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 24,
+  },
+  newaddButton: {
     backgroundColor: '#FBB03A',
     padding: 16,
-    borderRadius: 8,
     alignItems: 'center',
-    marginTop: 16,
+    width: '60%',
+    borderRadius: 15,
+    shadowColor: "#000",
   },
   addButtonText: {
     color: '#fff',
     fontWeight: 'bold',
+    fontSize: 16,
   },
   modalContainer: {
     flex: 1,
@@ -169,14 +186,29 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 8,
-    padding: 8,
+    padding: 10,
     marginBottom: 16,
+    fontSize: 20,
+  },
+  modalButton: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
+  addButton: {
+    backgroundColor: '#FBB03A',
+    padding: 14,
+    marginRight: 5,
+    borderRadius: 8,
+    alignItems: 'center',
+    width: '48%',
   },
   cancelButton: {
     backgroundColor: '#ccc',
-    padding: 16,
+    padding: 14,
+    marginLeft: 5,
     borderRadius: 8,
     alignItems: 'center',
+    width: '48%',
   },
   cancelButtonText: {
     color: '#fff',
