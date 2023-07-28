@@ -99,7 +99,7 @@ const Details = ({ route, navigation }) => {
               style={styles.removeButton}
             >
             <View key={details.id} style={styles.containerStyle}>
-              <View style={[styles.pulldownStyle, { width: '40%' }]}>
+              <View style={[styles.pulldownStyle1, { width: '40%' }]}>
                 <Text style={styles.textStyle}>店舗名</Text>
                 <TextInput
                   style={styles.textInputStyle}
@@ -109,7 +109,7 @@ const Details = ({ route, navigation }) => {
                 />
               </View>
               <View style={styles.textflex}>
-                <View style={styles.pulldownStyle}>
+                <View style={styles.pulldownStyle2}>
                   <Text style={styles.textStyle}>量</Text>
                   <TextInput
                     style={styles.textInputStyle}
@@ -122,7 +122,7 @@ const Details = ({ route, navigation }) => {
                 <Text>あたり</Text>
               </View>
               <View style={styles.textflex}>
-                <View style={styles.pulldownStyle}>
+                <View style={styles.pulldownStyle2}>
                   <Text style={styles.textStyle}>値段</Text>
                   <TextInput
                     style={styles.textInputStyle}
@@ -166,15 +166,8 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 16,
+    textAlign: 'center',
   },
-//   memoInput: {
-//     borderWidth: 1,
-//     borderColor: '#ccc',
-//     borderRadius: 8,
-//     padding: 8,
-//     marginBottom: 16,
-//     minHeight: 150,
-//   },
     containerStyle: {
         display: 'flex',
         flexDirection: 'row',
@@ -183,19 +176,25 @@ const styles = StyleSheet.create({
     },
     containerStyle1: {
         display: 'flex',
-        flexDirection: 'row',
         justifyContent: 'center',
     },
     textflex: {
         flexDirection: 'row',
         alignItems: 'center',
     },
-    pulldownStyle: {
+    pulldownStyle1: {
         borderStyle: 'solid',
         borderRadius: 8,
         borderWidth: 1,
         borderColor: '#f0f0f0'
     },
+    pulldownStyle2: {
+      borderStyle: 'solid',
+      borderRadius: 8,
+      borderWidth: 1,
+      borderColor: '#f0f0f0',
+      width: 70,
+  },
     textStyle: {
         backgroundColor: '#FBB03A',
         color: 'white',
@@ -213,6 +212,7 @@ const styles = StyleSheet.create({
     textInputStyle: {
         fontSize: 18,
         padding: 10,
+        textAlign: 'center',
     },
     removeButton: {
       borderRadius: 5,
