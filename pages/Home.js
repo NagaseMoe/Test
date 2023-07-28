@@ -24,10 +24,6 @@ const Calculator = () => {
     const num1 = number1 / number2;
     const num2 = number3 / number4;
 
-    if (isNaN(num1) || isNaN(num2)) {
-      setResult("値が入力されていません");
-      return;
-    }
     if (num1 < num2) {
       setResult("Aの方がお得");
     } else if (num1 > num2) {
@@ -52,7 +48,9 @@ const Calculator = () => {
       <View style={styles.container}>
         <View>
           {/* resultの値に応じて表示・非表示を切り替える */}
-          {result !== "同じ" && result !== "Aの方がお得" && result !== "Bの方がお得" && <Text>{result}</Text>}
+          {result !== "同じ" &&
+            result !== "Aの方がお得" &&
+            result !== "Bの方がお得" && <Text>{result}</Text>}
 
           {result === "Aの方がお得" && (
             <Image
@@ -190,7 +188,7 @@ const Calculator = () => {
 };
 
 const styles = StyleSheet.create({
-   leftTextContainer: {
+  leftTextContainer: {
     display: "none",
   },
   container: {
