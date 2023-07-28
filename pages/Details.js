@@ -98,7 +98,7 @@ const Details = ({ route, navigation }) => {
               style={styles.removeButton}
             >
             <View key={details.id} style={styles.containerStyle}>
-              <View style={[styles.pulldownStyle, { width: '30%' }]}>
+              <View style={[styles.pulldownStyle, { width: '40%' }]}>
                 <Text style={styles.textStyle}>店舗名</Text>
                 <TextInput
                   style={styles.textInputStyle}
@@ -193,7 +193,6 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 18,
         textAlign: 'center',
-        borderRadius: 8,
     },
     titleInputStyle: {
         fontSize: 24,
@@ -215,6 +214,7 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 8,
     alignItems: 'center',
+    marginTop: 10,
   },
   buttonText: {
     color: '#fff',

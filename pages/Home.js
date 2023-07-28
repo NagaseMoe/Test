@@ -92,7 +92,7 @@ const Calculator = () => {
         <SafeAreaView style={{ backgroundColor: "#fff" }}>
           <ScrollView scrollEnabled={true}>
             <View style={styles.containerStyle}>
-              {result !== "" && <Text>{result}</Text>}
+              {result !== "" && <Text>{}</Text>}
               <View style={styles.containerStyle1}>
                 <Image
                   style={{
