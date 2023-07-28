@@ -197,8 +197,8 @@ const styles = StyleSheet.create ({
     marginVertical: 8,
   },
   checkbox: {
-    width: 36,
-    height: 36,
+    width: 25,
+    height: 25,
     borderWidth: 1,
     borderColor: '#888888',
     justifyContent: "center",
@@ -241,3 +241,4 @@ const styles = StyleSheet.create ({
 });
 
 export default TodoScreen;
+
