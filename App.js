@@ -28,8 +28,12 @@ const DetailsStackScreen = () => (
     <Stack.Screen
       name="メモ詳細"
       component={DetailsScreen}
-      options={({ navigation }) => ({
+      options={(
+        { navigation }) => ({
         headerShown: true,
+        headerTitleStyle: {
+          color: '#FBB03A',
+        },
         headerLeft: () => (
           <Feather
             name="chevron-left"

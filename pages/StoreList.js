@@ -136,14 +136,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   header: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: 16,
     textAlign: 'center',
+    color: '#FBB03A',
   },
   storeButton: {
     backgroundColor: '#fff',
-    padding: 16,
+    padding: 24,
     borderRadius: 8,
     borderBottomWidth: 1,
     borderColor: "#DADADA",
@@ -164,6 +164,13 @@ const styles = StyleSheet.create({
     width: '60%',
     borderRadius: 15,
     shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 6,
+    elevation: 5,
   },
   addButtonText: {
     color: '#fff',

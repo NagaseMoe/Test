@@ -210,6 +210,8 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 18,
         textAlign: 'center',
+        padding: 3,
+        fontWeight: 'bold',
     },
     titleInputStyle: {
         fontSize: 24,
@@ -221,7 +223,7 @@ const styles = StyleSheet.create({
     },
     textInputStyle: {
         fontSize: 18,
-        padding: 10,
+        padding: 12,
     },
     removeButton: {
       borderRadius: 5,
