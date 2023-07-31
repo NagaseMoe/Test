@@ -230,6 +230,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     width: 136,
     marginBottom: 10,
+    fontSize: 24,
   },
   amountframe: {
     borderWidth: 1,
@@ -239,6 +240,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     width: 156,
     marginBottom: 20,
+    fontSize: 24,
   },
   calculatorButton: {
     backgroundColor: "#FBB03A",
