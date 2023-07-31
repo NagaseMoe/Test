@@ -10,7 +10,6 @@ import {
   Image,
   Keyboard,
 } from "react-native";
-// import { StyleSheet } from 'react-native-web';
 
 const Calculator = () => {
   const [number1, setNumber1] = useState("");
@@ -91,7 +90,11 @@ const Calculator = () => {
           <ScrollView scrollEnabled={true}>
             <View style={styles.containerStyle}>
               {result !== "" && <Text>{}</Text>}
-              <View style={styles.containerStyle1}>
+              <View 
+              style={[
+                styles.containerStyle1,
+                result === "Bの方がお得" && styles.shadowContainer,
+              ]}>
                 <Image
                   style={{
                     marginTop: 10,
@@ -127,7 +130,11 @@ const Calculator = () => {
                 />
               </View>
 
-              <View style={styles.containerStyle1}>
+              <View 
+              style={[
+                styles.containerStyle1,
+                result === "Aの方がお得" && styles.shadowContainer,
+              ]}>
                 <View>
                   <Image
                     style={{
@@ -262,6 +269,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
+  shadowContainer: {
+    backgroundColor: "#00000020",
+  }
 });
 
 export default Calculator;
