@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Cheaper",
-    "slug": "cheaper",
+    "slug": "hikaku",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/apicon.png",
@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.tas321.hikaku"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "4ee50c91-19b3-4971-ae34-80704b1f97d6"
+      }
     }
   }
 }
